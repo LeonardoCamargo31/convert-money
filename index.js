@@ -1,5 +1,7 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const path = require('path')
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -10,26 +12,33 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/', async(req, res) => {
-    const cotacao= await apiBCB.getCotacao()
-    console.log(cotacao)
-    res.render('home',{
-        cotacao
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+
+app.get('/', async (req, res) => {
+    const cotacao = await apiBCB.getCotacao()
+    res.render('home', {
+        cotacao: toMoney(cotacao.ask),
+        data: apiBCB.getData(cotacao.create_date)
     })
 })
 
-app.get('/cotacao', (req, res) => {
-    const { cotacao, quantidade } = req.query
+app.post('/cotacao', async (req, res) => {
+    const { quantidade } = req.body
+    const cotacao = await apiBCB.getCotacao()
     if (cotacao && quantidade) {
-        const resultado = convert(cotacao, quantidade)
-        res.render('cotacao', {
+        const resultado = convert(cotacao.ask, quantidade)
+
+        res.json({
             error: false,
-            cotacao: toMoney(cotacao),
+            cotacao: toMoney(cotacao.ask),
             quantidade: toMoney(quantidade),
-            resultado: toMoney(resultado)
+            resultado: toMoney(resultado),
+            data: apiBCB.getData(cotacao.create_date)
         })
     } else {
-        res.render('cotacao', {
+        res.json({
             error: 'Valores inválidos'
         })
     }
