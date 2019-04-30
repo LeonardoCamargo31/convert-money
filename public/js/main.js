@@ -39,7 +39,7 @@ function send(quantidade) {
             if (!data.error) {
                 $('.cotacao').show()
                 $('.vl_quantidade').html('$ '+data.quantidade)
-                $('.vl_cotacao').html('R$ '+data.cotacao+' (atualizada '+data.data+')')
+                $('.vl_cotacao').html('R$ '+data.cotacao+' (atualizada há '+data.data+')')
                 $('.vl_resultado').html('R$ '+data.resultado)
             } else {
                 $('.erro').show()
