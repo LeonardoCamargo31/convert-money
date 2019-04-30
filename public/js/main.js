@@ -20,24 +20,12 @@ $(function () {
         }
     })
     $('.money').mask("#.##0,00", { reverse: true });
-
-    $('.voltar').click(function () {
-        init()
-    })
 })
 
 
 function getBaseUrl() {
     var getUrl = window.location;
     return getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-}
-
-function init() {
-    $('.form-control-quantidade').removeClass('error')
-    $('#quantidade').val('')
-    $('form').show()
-    $('.cotacao').hide()
-    $('.erro').hide()
 }
 
 function send(quantidade) {

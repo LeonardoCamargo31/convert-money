@@ -24,22 +24,22 @@ h6 {
   font-weight: 700;
 }
 
-.voltar{
+.voltar {
   cursor: pointer;
   color: #2f3439;
   opacity: 0.8;
   font-size: 1.3rem;
-  transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
 }
 
-.voltar:hover{
+.voltar:hover {
   text-decoration: none;
   color: #2f3439;
   opacity: 1;
   font-size: 1.3rem;
-  transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
 }
 
 .overlay {
@@ -59,17 +59,18 @@ h6 {
   padding-bottom: 3rem;
   z-index: 2;
 }
-.mb-5, .my-5{
+.mb-5,
+.my-5 {
   margin-bottom: 2rem !important;
 }
 
-
-.masthead-content img{
+.masthead-content img {
   max-width: 100%;
-  margin-bottom: 1rem!important;
+  margin-bottom: 1rem !important;
 }
 
-.cotacao,.erro{
+.cotacao,
+.erro {
   display: none;
 }
 
@@ -108,7 +109,7 @@ h6 {
   font-weight: 300 !important;
 }
 
-.masthead .masthead-content input:focus{
+.masthead .masthead-content input:focus {
   outline: none;
   border-color: #ced4da;
   box-shadow: none;
@@ -117,15 +118,15 @@ h6 {
 .invalid-feedback {
   display: none;
   width: 100%;
-  margin-top: .25rem;
+  margin-top: 0.25rem;
   color: #dc3545;
 }
 
 .error .invalid-feedback {
-  display: block
+  display: block;
 }
 
-.error .form-control{
+.error .form-control {
   border-color: #dc3545;
 }
 
@@ -149,6 +150,35 @@ h6 {
   box-shadow: none;
 }
 
+.social-icons {
+  position: absolute;
+  margin-bottom: 2rem;
+  width: 100%;
+  z-index: 2;
+}
+
+.social-icons ul {
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.social-icons ul > li {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: inline-block;
+}
+
+.social-icons ul > li > a {
+  display: block;
+  color: white;
+  background-color: rgba(0, 46, 102, 0.8);
+  border-radius: 100%;
+  font-size: 2rem;
+  line-height: 4rem;
+  height: 4rem;
+  width: 4rem;
+}
 
 @media (min-width: 768px) {
   .masthead {
@@ -171,14 +201,43 @@ h6 {
   .masthead .masthead-content p {
     font-size: 1.3rem;
   }
+
+  .social-icons {
+    margin: 0;
+    position: absolute;
+    right: 2.5rem;
+    bottom: 2rem;
+    width: auto;
+  }
+  .social-icons ul {
+    margin-top: 0;
+    width: auto;
+  }
+  .social-icons ul > li {
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+  .social-icons ul > li:last-child {
+    margin-bottom: 0;
+  }
+  .social-icons ul > li > a {
+    background-color: #212529;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    font-size: 2rem;
+    line-height: 4rem;
+    height: 4rem;
+    width: 4rem;
+  }
+  .social-icons ul > li > a:hover {
+    background-color: #212529;
+  }
 }
 
-
 @media (max-width: 768px) {
-  .masthead{
-    height: 100vh;
-  }
-  .masthead .masthead-bg{
-    transform:none;
+  .masthead .masthead-bg {
+    transform: none;
   }
 }

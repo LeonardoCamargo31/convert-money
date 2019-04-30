@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 app.get('/', async (req, res) => {
     const cotacao = await apiBCB.getCotacao()
     res.render('home', {
-        cotacao: toMoney(cotacao.ask),
+        cotacao: toMoney(cotacao.bid),
         data: apiBCB.getData(cotacao.create_date)
     })
 })
@@ -28,11 +28,11 @@ app.post('/cotacao', async (req, res) => {
     const { quantidade } = req.body
     const cotacao = await apiBCB.getCotacao()
     if (cotacao && quantidade) {
-        const resultado = convert(cotacao.ask, quantidade)
+        const resultado = convert(cotacao.bid, quantidade)
 
         res.json({
             error: false,
-            cotacao: toMoney(cotacao.ask),
+            cotacao: toMoney(cotacao.bid),
             quantidade: toMoney(quantidade),
             resultado: toMoney(resultado),
             data: apiBCB.getData(cotacao.create_date)
