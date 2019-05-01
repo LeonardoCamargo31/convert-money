@@ -10,15 +10,22 @@
                     <img src="/img/logo.png" />
                     <p class="mb-5">Conversão de dólar americano (preço de compra) para real brasileiro, cotações do
                         dólar é atualizada a cada 3 minutos.</p>
-                    <form>
+                    <form id="form" action="/cotacao" method="GET">
                         <div class="form-group">
                             <label>Cotação do dolar (atualizada há <%= data%>)</label>
-                            <input type="text" class="form-control" name="cotacao" placeholder="Cotação dolar" value="<%= cotacao%>"
-                                disabled />
+                            <input type="hidden" name="cotacao" value="<%= cotacao%>" />
+                            <input type="text" 
+                                class="form-control" 
+                                placeholder="Cotação dolar" 
+                                value="<%= cotacao%>" 
+                                disabled/>
                         </div>
                         <div class="form-group form-control-quantidade">
                             <label>Quantidade de dolares</label>
-                            <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade de dolares"
+                            <input type="text" class="form-control" 
+                                id="quantidade" 
+                                name="quantidade" 
+                                placeholder="Quantidade de dolares"
                                 autocomplete="off" />
                             <div class="invalid-feedback"></div>
                         </div>
@@ -26,18 +33,6 @@
                             <button id="btn" class="btn btn-secondary" type="button">Converter</button>
                         </div>
                     </form>
-                    <div class="cotacao">
-                        <p>
-                            Quantidade de dolares: <b class="vl_quantidade"></b><br />
-                            Valor da cotação: <b class="vl_cotacao"></b><br />
-                            Resultado: <b class="vl_resultado"></b>
-                        </p>
-                        <a href="/" class="voltar">Realizar uma nova conversão</a>
-                    </div>
-                    <div class="erro">
-                        <p>Ops ocorrreu algum erro, tente novamente :)</p>
-                        <a href="/" class="voltar">Realizar uma nova conversão</a>
-                    </div>
                 </div>
             </div>
         </div>

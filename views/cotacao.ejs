@@ -1,0 +1,42 @@
+<%- include('header')%>
+<div class="overlay"></div>
+
+<div class="masthead">
+    <div class="masthead-bg"></div>
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-12 my-auto">
+                <div class="masthead-content py-5 py-md-0">
+                    <img src="/img/logo.png" />
+                    <p class="mb-5">Conversão de dólar americano (preço de compra) para real brasileiro, cotações do
+                        dólar é atualizada a cada 3 minutos.</p>
+                        <% if(error){%>
+                            <p><%= error %></p>
+                        <% }else{ %>
+                            <p>
+                                Quantidade de dolares: <b>
+                                    $ <%= quantidade %></b><br/>
+                                Valor da cotação: <b>
+                                    R$ <%= cotacao %></b><br/>
+                                Resultado: <b>
+                                    R$ <%= resultado %></b>
+                            </p>
+                        <% } %>
+                    <a href="/" class="voltar">Realizar uma nova conversão</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="social-icons">
+    <ul class="list-unstyled text-center mb-0">
+        <li class="list-unstyled-item">
+            <a href="https://github.com/LeonardoCamargo31/convert-money">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<%- include('footer')%>

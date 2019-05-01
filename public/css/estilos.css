@@ -69,11 +69,6 @@ h6 {
   margin-bottom: 1rem !important;
 }
 
-.cotacao,
-.erro {
-  display: none;
-}
-
 .masthead .masthead-bg {
   position: absolute;
   top: 0;

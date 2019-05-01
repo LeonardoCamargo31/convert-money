@@ -24,21 +24,18 @@ app.get('/', async (req, res) => {
     })
 })
 
-app.post('/cotacao', async (req, res) => {
-    const { quantidade } = req.body
-    const cotacao = await apiBCB.getCotacao()
+app.get('/cotacao', async (req, res) => {
+    const { cotacao, quantidade } = req.query
     if (cotacao && quantidade) {
-        const resultado = convert(cotacao.bid, quantidade)
-
-        res.json({
+        const resultado = convert(cotacao, quantidade)
+        res.render('cotacao', {
             error: false,
-            cotacao: toMoney(cotacao.bid),
+            cotacao: toMoney(cotacao),
             quantidade: toMoney(quantidade),
-            resultado: toMoney(resultado),
-            data: apiBCB.getData(cotacao.create_date)
+            resultado: toMoney(resultado)
         })
     } else {
-        res.json({
+        res.render('cotacao', {
             error: 'Valores inválidos'
         })
     }
