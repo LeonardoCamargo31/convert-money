@@ -1,52 +1,22 @@
 <%- include('header')%>
-<div class="overlay"></div>
 
-<div class="masthead">
-    <div class="masthead-bg"></div>
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-12 my-auto">
-                <div class="masthead-content py-5 py-md-0">
-                    <img src="/img/logo.png" />
-                    <p class="mb-5">Conversão de dólar americano (preço de compra) para real brasileiro, cotações do
-                        dólar é atualizada a cada 3 minutos.</p>
-                    <form id="form" action="/cotacao" method="GET">
-                        <div class="form-group">
-                            <label>Cotação do dolar (atualizada há <%= data%>)</label>
-                            <input type="hidden" name="cotacao" value="<%= cotacao%>" />
-                            <input type="text" 
-                                class="form-control" 
-                                placeholder="Cotação dolar" 
-                                value="<%= cotacao%>" 
-                                disabled/>
-                        </div>
-                        <div class="form-group form-control-quantidade">
-                            <label>Quantidade de dolares</label>
-                            <input type="text" class="form-control" 
-                                id="quantidade" 
-                                name="quantidade" 
-                                placeholder="Quantidade de dolares"
-                                autocomplete="off" />
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-input">
-                            <button id="btn" class="btn btn-secondary" type="button">Converter</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<form id="form" action="/cotacao" method="GET">
+    <div class="form-group form-control-cotacao">
+        <label>Cotação do dolar</label>
+        <input type="hidden" name="cotacao" id="cotacao" value="<%= cotacao%>" />
+        <input type="text" class="form-control" placeholder="Cotação dolar" value="<%= cotacao%>" disabled />
+        <div class="invalid-feedback"></div>
     </div>
-</div>
+    <div class="form-group form-control-quantidade">
+        <label>Quantidade de dolares</label>
+        <input type="text" class="form-control money" id="quantidade" name="quantidade" placeholder="Quantidade de dolares"
+            autocomplete="off" />
+        <div class="invalid-feedback"></div>
+    </div>
+    <div class="form-input">
+        <button id="btn" class="btn btn-secondary" type="button">Converter</button>
+    </div>
+</form>
 
-<div class="social-icons">
-    <ul class="list-unstyled text-center mb-0">
-        <li class="list-unstyled-item">
-            <a href="https://github.com/LeonardoCamargo31/convert-money">
-                <i class="fab fa-github"></i>
-            </a>
-        </li>
-    </ul>
-</div>
 
 <%- include('footer')%>

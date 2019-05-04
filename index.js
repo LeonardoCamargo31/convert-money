@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const path = require('path')
 
 const app = express()
@@ -12,16 +11,17 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
-
 app.get('/', async (req, res) => {
     const cotacao = await apiBCB.getCotacao()
-    res.render('home', {
-        cotacao: toMoney(cotacao.bid),
-        data: apiBCB.getData(cotacao.create_date)
-    })
+    if (cotacao) {
+        res.render('home', {
+            cotacao: toMoney(cotacao)
+        })
+    } else {
+        res.render('home', {
+            cotacao: 'Não foi possivel obter a cotação'
+        })
+    }
 })
 
 app.get('/cotacao', async (req, res) => {
